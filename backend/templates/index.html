@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+   <link rel="stylesheet" type="text/css" href="/static/css/main.css">
+   <script src="/static/js/main.js"></script>
+</head>
+
+<body>
+
+   {% if tab_to_show == 'mnist' %}
+   <div class="tab">
+      <button class="tablinks" onclick="openTab(event, 'MNIST')" id="defaultOpen">MNIST</button>
+      <button class="tablinks" onclick="openTab(event, 'GPT2')">GPT2</button>
+   </div>
+   {% else %}
+   <div class="tab">
+      <button class="tablinks" onclick="openTab(event, 'MNIST')">MNIST</button>
+      <button class="tablinks" onclick="openTab(event, 'GPT2')" id="defaultOpen">GPT2</button>
+   </div>
+   {% endif %}
+
+   <!-- Tab for MNIST classification -->
+   <div id="MNIST" class="tabcontent">
+      <h1 class="title"> MNIST FLASK APP DEMO </h1>
+
+      <form id="form" method="POST" enctype="multipart/form-data">
+
+         <input type="hidden" name="predictor" value="mnist">
+
+         {% if prediction != None %}
+         <!-- Show prediction results. -->
+         <p> The MNIST model read a <b>{{ prediction }}</b> </p>
+         {% endif %}
+
+         <!-- Show upload button for follow up predictions. -->
+         <label for="file-upload" class="center custom-button">
+            upload an image
+            <input type="file" id="file-upload" name="image" onchange=submit() />
+         </label>
+      </form>
+   </div>
+
+
+   <!-- Tab for GPT2 text generation -->
+   <div id="GPT2" class="tabcontent">
+      <h1>GPT2 TEXT GENERATION DEMO</h1>
+
+      <form method="POST" enctype="multipart/form-data">
+
+         <input type="hidden" name="predictor" value="gpt2">
+         Sentence beginning:<br>
+         <input type="text" name="starting_tokens" value="Once upon a time...">
+         <br>
+         Number of tokens to generate:<br>
+         <input type="number" name="sequence_length" value="40">
+         <br><br>
+         <input type="submit" value="Submit">
+
+      </form>
+
+      {% if generated_text != None %}
+      <br><br>
+      <p>{{ generated_text }} </p>
+      {% endif %}
+
+
+   </div>
+
+   <script>
+      // Get the element with id="defaultOpen" and click on it
+      document.getElementById("defaultOpen").click();
+   </script>
+
+</body>
+
+</html>
