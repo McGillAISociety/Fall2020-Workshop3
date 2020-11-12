@@ -35,7 +35,15 @@ For more info about creating and managing Conda environments, please refer to th
 
 ## Frontend
 
-Instantiate the frontend using the following command
+The frontend was instantiated using the following command
 ```
 npm init react-app frontend
+```
+
+Since this has already been done here's what you need to do to run the frontend
+
+```
+cd frontend 
+npm install
+npm start
 ```
