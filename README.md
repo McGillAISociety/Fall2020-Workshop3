@@ -6,6 +6,9 @@ This workshop will cover the basics on:
 - Create a reactjs frontend
 - Having the frontend call the backend for predictions
 
+## Slides
+The slides for this workshop can be found [here](https://docs.google.com/presentation/d/1DkIez0tmL58wIh1P7Dr2Zb8r_wzbQIvlgxgOjs9U5HU/edit?usp=sharing)
+
 ## Backend
 
 The backend is in flask and the dependencies are managed by pipenv.
@@ -25,5 +28,5 @@ If you are on
 
 Instantiate the frontend using the following command
 ```
-npx create-react-app frontend
+npm init react-app frontend
 ```

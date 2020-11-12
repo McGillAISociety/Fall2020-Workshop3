@@ -27,5 +27,11 @@ def load():
     return render_template('index.html', prediction=None, generated_text=None, tab_to_show='mnist')
 
 
+@app.route('/predict/image', methods=['POST'])
+def make_image_prediction():
+    prediction = mnist.predict(request)
+    print(prediction)
+    return str(prediction)
+
 if __name__ == '__main__':
     app.run(debug=True)
