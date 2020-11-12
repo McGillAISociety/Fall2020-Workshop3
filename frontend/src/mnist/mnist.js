@@ -1,14 +1,9 @@
-import logo from './logo.svg';
-import './App.css';
 import React, {useState} from 'react';
 import axios from 'axios';
-import { BrowserRouter as Router, Switch, Route, Link} from 'react-router-dom';
-import Mnist from './mnist/mnist';
-import Home from './home/home'
-import GPT2 from './gpt2/gpt2';
-import TopBar from './topbar/topbar';
+import './mnist.css';
+import { getImagePrediction } from '../api';
 
-function App() {
+function Mnist() {
   const [prediction, setPrediction] = useState(-1);
   const [selectedFile, setSelectedFile] = useState(null);
   const [image, setImage] = useState(null);
@@ -17,40 +12,40 @@ function App() {
     e.preventDefault();
     const formData = new FormData();
     formData.append("image", selectedFile);
-    axios.post('/predict/image', formData)
+    getImagePrediction(formData)
     .then(res => {
-      setPrediction(res.data)
+      setPrediction(res);
     })
-    .catch(err => {
-      alert(err);
-    })
+
   }
 
   const setFileAndImage = (file) => {
     setSelectedFile(file);
-    setImage(URL.createObjectURL(file));
+    if (file !== null){
+      setImage(URL.createObjectURL(file));
+    } else{
+      setImage(null);
+      setPrediction(null);
+    }
+    
   }
 
-
   return (
-    <Router>
-      <div className="App">
-      <Switch>
-        <Route path="/mnist">
-          <TopBar title="MNIST"/>
-          <Mnist/>
-        </Route>
-        <Route path="/gpt2">
-          <TopBar title="GPT2"/>
-          <GPT2/>
-        </Route>
-        <Route path="/">
-          <Home/>
-        </Route>
-      </Switch>
-      </div>
-    </Router>
+      <div className="main-div">
+      <form onSubmit={e => submitForm(e)} >
+        <input 
+          type="file"
+          onChange={e => setFileAndImage(e.target.files[0])}
+        /> <br/>
+        <button type="submit">
+          Get Prediction!
+        </button>
+      </form>
 
+      <img src={image}>
+      </img>
+      <p>{prediction == -1 ? "Please upload an image and get a prediction" : `The current prediction is ${prediction}`}</p>
+      </div>
   );
 }
 
@@ -73,4 +68,4 @@ function App() {
 //   }
 // }
 
-export default App;
+export default Mnist;

@@ -33,5 +33,11 @@ def make_image_prediction():
     print(prediction)
     return str(prediction)
 
+
+@app.route('/predict/text', methods=['POST'])
+def make_text_prediction():
+    prediction = gpt2.predict(request)
+    return str(prediction)
+
 if __name__ == '__main__':
     app.run(debug=True)
