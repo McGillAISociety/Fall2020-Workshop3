@@ -1,15 +1,3 @@
-# mais-flask-workshop-2020
-
-The goal of this project is to demonstrate a simple example of how to integrate different machine learning models into real-life applications. To achieve this goal, this repository holds the source code for a flask application allowing users to upload images and evaluate the image to predict the handwritten digit. This application also uses the pre-trained model for GPT2 to generate text given a starting prompt.
-
-This project is to be used for introductory workshops aimed at teaching the basics of integrating ML into a Flask App.
-
-## Prerequisites
-
-Install necessary python packages
-
-`pip install -r requirements.txt`
-
 ## Running the Flask Application 
 
 Run the **app.py** file from the **root** directory. 
@@ -18,7 +6,7 @@ Run the **app.py** file from the **root** directory.
 
 Go to **localhost:5000** to access the application from the browser of your choice.
 
-## Structure of the repository
+## Structure of the folder
 
 ```
 ├── README.md
