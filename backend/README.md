@@ -1,4 +1,4 @@
-# mais-flask-workshop-2019
+# mais-flask-workshop-2020
 
 The goal of this project is to demonstrate a simple example of how to integrate different machine learning models into real-life applications. To achieve this goal, this repository holds the source code for a flask application allowing users to upload images and evaluate the image to predict the handwritten digit. This application also uses the pre-trained model for GPT2 to generate text given a starting prompt.
 
