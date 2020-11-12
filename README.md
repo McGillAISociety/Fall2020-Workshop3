@@ -11,18 +11,27 @@ The slides for this workshop can be found [here](https://docs.google.com/present
 
 ## Backend
 
-The backend is in flask and the dependencies are managed by pipenv.
-The python version used is 3.8.6 on Windows.
+The backend is written in Flask and requires a Python version of 3.8+
 
-To install the dependencies type the following commands from within the backend folder
+We provide below 3 different ways of installing the needed dependencies to run the Flask app. Please run the following commands from within the backend folder
 
+- Using pip:
+```
+pip install -r requirements.txt
+```
+
+- Using Pipenv:
 ```
 pip install pipenv
 pipenv shell
 pipenv install
 ```
 
-If you are on 
+- Using Conda: 
+```
+conda env create -f environment.yml
+```
+For more info about creating and managing Conda environments, please refer to this [link](https://docs.conda.io/projects/conda/en/latest/user-guide/tasks/manage-environments.html)
 
 ## Frontend
 
